@@ -13,10 +13,10 @@
       "reminder": false
     },
     {
-      "id": 3,
-      "text": "Stream on Twitch",
-      "day": "March 5th at 10:00am",
-      "reminder": true
+      "text": "Start a Stream",
+      "day": "March 6th at 10am",
+      "reminder": true,
+      "id": 3
     }
   ]
 }
