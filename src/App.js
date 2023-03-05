@@ -23,7 +23,9 @@ function App() {
 
   //fetch tasks data
   const fetchTasks = async () => {
-    const res = await fetch('http://localhost:5000/tasks');
+    const res = await fetch(
+      'https://json-server-react-task-tracker-milos.glitch.me/tasks'
+    );
     const data = await res.json();
 
     return data;
@@ -31,7 +33,9 @@ function App() {
 
   //fetch task data
   const fetchTask = async (id) => {
-    const res = await fetch(`http://localhost:5000/tasks/${id}`);
+    const res = await fetch(
+      `https://json-server-react-task-tracker-milos.glitch.me/tasks/${id}`
+    );
     const data = await res.json();
 
     return data;
@@ -42,13 +46,16 @@ function App() {
     const taskToToggle = await fetchTask(id);
     const updatedTask = { ...taskToToggle, reminder: !taskToToggle.reminder };
 
-    const res = await fetch(`http://localhost:5000/tasks/${id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(updatedTask),
-    });
+    const res = await fetch(
+      `https://json-server-react-task-tracker-milos.glitch.me/tasks/${id}`,
+      {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updatedTask),
+      }
+    );
 
     const data = await res.json();
 
@@ -65,13 +72,16 @@ function App() {
     // const newTask = { id, ...task };
     // setTasks([...tasks, newTask]);
 
-    const res = await fetch('http://localhost:5000/tasks', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(task),
-    });
+    const res = await fetch(
+      'https://json-server-react-task-tracker-milos.glitch.me/tasks',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(task),
+      }
+    );
 
     const data = await res.json();
 
@@ -80,7 +90,10 @@ function App() {
 
   //delete task
   const deleteTask = async (id) => {
-    await fetch(`http://localhost:5000/tasks/${id}`, { method: 'DELETE' });
+    await fetch(
+      `https://json-server-react-task-tracker-milos.glitch.me/tasks/${id}`,
+      { method: 'DELETE' }
+    );
 
     setTasks(tasks.filter((task) => task.id !== id));
   };
